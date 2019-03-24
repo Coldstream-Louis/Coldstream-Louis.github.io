@@ -1,173 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Shuyang Du</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="images/x-icon"/>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this template -->
-    <link href="css/clean-blog.min.css" rel="stylesheet">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop up chat boxes</title>
+    <link href="style.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="synthesis.js" type="text/javascript" defer></script>
+ <script src="script.js" type="text/javascript" defer></script>
   </head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Shuyang Du</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="post.html">Other works</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<div id="page-wrapper">
+ <h1>Chatbot Demo</h1>
 
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/home-bg1.jpg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="site-heading">
-              <h1>Portfolio</h1>
-              <span class="subheading">Welcome to explore my works</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+ <p id="msg"></p>
 
-    <!-- Portfolio -->
-    <div class="container">
-      <div class="content-section-heading text-center">
-        <!--<h3 class="text-secondary mb-0">Portfolio</h3>-->
-        <h2 class="mb-5">Recent Projects</h2>
-      </div>
-      <div class="row no-gutters">
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="DrawingAR.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Drawing AR</h2>
-                  <p class="mb-0">A HoloLens appliaction that help the novice learn how to drawing</p>
-                </span>
-              </span>
-            <img class="img-fluid" src="img/Hololens.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="AgentRobi.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Agent Robi</h2>
-                  <p class="mb-0">A game that helps students better understand programming thinking</p>
-                </span>
-              </span>
-            <img class="img-fluid" src="img/game.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="MIT.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>City Scope LivingLine</h2>
-                  <p class="mb-0">Project of City Science Lab @ Shanghai & City Science Group at MIT Media Lab</p>
-                </span>
-              </span>
-            <img class="img-fluid" src="img/mit1.jpg" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="KG.html">
-              <span class="caption">
-                <span class="caption-content">
-                  <h2>Interactive Personal Knowledge Graph</h2>
-                  <p class="mb-0">Interactive personal knowledge graph for a service robot cooperated with Intel</p>
-                </span>
-              </span>
-            <img class="img-fluid" src="img/KG1.png" alt="">
-          </a>
-        </div>
-      </div>
-    </div>
+ <!--<input type="text" name="speech-msg" id="speech-msg" x-webkit-speech>-->
 
-    <hr>
+ <div class="option">
+  <label for="voice">Voice</label>
+  <select name="voice" id="voice"></select>
+ </div>
+ <div class="option">
+  <label for="volume">Volume</label>
+  <input type="range" min="0" max="1" step="0.1" name="volume" id="volume" value="1">
+ </div>
+ <div class="option">
+  <label for="rate">Rate</label>
+  <input type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1">
+ </div>
+ <div class="option">
+  <label for="pitch">Pitch</label>
+  <input type="range" min="0" max="2" step="0.1" name="pitch" id="pitch" value="1">
+ </div>
+<!--
+ <button id="speak">Speak</button>
+ <button id="search">Search Answer</button>
+ -->
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-            <ul class="list-inline text-center">
-              <li class="list-inline-item">
-                <a target="view_window" href="https://twitter.com/DuShuyang">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a target="view_window" href="https://www.facebook.com/shuyang.du.1">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a target="view_window" href="https://github.com/Coldstream-Louis">
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-            <p class="copyright text-muted">&copy; 2018 Shuyang Du, all rights reserved</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+</div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<div class="msg_box" rel="skp">
+ <div class="msg_head">Chatbot 1 Daily Talk
+  <div class="close">x</div>
+ </div>
+ <div class="msg_wrap">
+  <div class="msg_body">
+   <div class="msg-left">Whatcha doin? </div>
+   <div class="msg-right">Chatting and stuff</div>
+   <div class="msg-left">Nice one</div> 
+   <div class="msg_push"></div>
+  </div>
+  <div class="msg_footer"><textarea class="msg_input" rows="4" id="question_1"></textarea></div>
+ </div>
+</div>
+<div class="msg_box" rel="skp1" >
+ <div class="msg_head">Chatbot 2 Professional Knowledge
+  <div class="close">x</div>
+ </div>
+ <div class="msg_wrap">
+  <div class="msg_body">
+   <div class="msg-left">What's going down?</div>
+   <div class="msg-right">stuff</div>
+   <div class="msg-left">nice</div> 
+   <div class="msg_push"></div>
+  </div>
+  <div class="msg_footer"><textarea class="msg_input" rows="4" id="question_2"></textarea></div>
+ </div>
+</div>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/clean-blog.min.js"></script>
+<!--
+<div class="msg_box" style="right:570px;" rel="skp2">
+ <div class="msg_head">Lilia
+  <div class="close">x</div>
+ </div>
+ <div class="msg_wrap">
+  <div class="msg_body">
+   <div class="msg-left">What's happing? </div>
+   <div class="msg-right">Lost a leg</div>
+   <div class="msg-left">Bummer</div> 
+   <div class="msg_push"></div>
+  </div>
+  <div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div>
+ </div>
+</div>
 
-  </body>
 
+<div class="msg_box" style="right:830px;" rel="skp3">
+ <div class="msg_head">Mitch
+  <div class="close">x</div>
+  </div>
+ <div class="msg_wrap">
+  <div class="msg_body">
+   <div class="msg-left">What's doin? </div>
+   <div class="msg-right">Nothin</div>
+   <div class="msg-left">perfect, carry on</div> 
+   <div class="msg_push"></div>
+  </div>
+  <div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div>
+ </div>
+</div>
+
+<div class="msg_box" style="right:1090px;" rel="skp4">
+ <div class="msg_head">Kelly
+  <div class="close">x</div>
+ </div>
+ <div class="msg_wrap">
+  <div class="msg_body">
+   <div class="msg-left">Eh? </div>
+   <div class="msg-right">Shhh</div>
+   <div class="msg-left">Whatever </div> 
+   <div class="msg_push"></div>
+  </div>
+  <div class="msg_footer"><textarea class="msg_input" rows="4"></textarea></div>
+ </div>
+</div>
+-->
+
+</body>
 </html>
